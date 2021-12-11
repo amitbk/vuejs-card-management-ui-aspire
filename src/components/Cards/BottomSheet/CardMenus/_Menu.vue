@@ -2,7 +2,7 @@
     <!-- <router-link :to="to"> -->
         <div class="card-option__wrapper px-2">
             <!-- <i class="card-option__icon fas fa-home mb-1"></i>  -->
-            <img :src="getIcon" alt="" class="mb-1" style="color: red">
+            <img :src="getIcon" alt="" class="mb-1">
             <div class="card-option__label">
                 {{ title }}
             </div>

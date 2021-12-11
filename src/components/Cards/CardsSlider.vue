@@ -14,15 +14,23 @@
         <div class="tab-content my-3">
             <div class="tab-pane container active p-0 w-100" id="home">
 
+                <div class="py-4 text-center" v-if="cards.length == 0">
+                    <div class="my-5">
+                        No cards added.
+                    </div>
+                </div>
+                <div v-else>
+
+
                 <VueSlickCarousel :arrows="false" :dots="true" @afterChange="afterChange">
-                    <div class="px-2" v-for="i in 5" :key="i">
-                        <div class="bg-green border rounded p-2 px-3">
+                    <div class="px-2" v-for="(card, index) in cards" :key="index">
+                        <div class="border rounded p-2 px-3" :class="[ card.freezed ? 'bg-secondary' : 'bg-green']">
                             <div class="d-flex justify-content-end">
                                 <img src="@/assets/logo2.svg" alt="">
                             </div>
 
                             <div class="pt-4">
-                                <h4>Mark Henry</h4>
+                                <h4>{{card.name}}</h4>
                             </div>
 
 
@@ -39,7 +47,7 @@
                                     Thru: 12/20
                                 </div>
                                 <div>
-                                    CVV: ***
+                                    CVV: *** 
                                 </div>
                                 <div class="mt-3">
                                     <img src="@/assets/visa.svg" alt="">
@@ -48,7 +56,7 @@
                         </div>
                     </div>                        
                 </VueSlickCarousel>
-                
+                </div>
             </div>
             <div class="tab-pane container fade p-5 text-center" id="menu1">
                 <div class="my-2">
@@ -69,19 +77,28 @@ import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 // optional style for arrows & dots
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
+import { cardMixin } from "../../mixins/card"
+import { mapActions } from "vuex";
+
 export default {
-    name: "CardsWrapper",
+    name: "CardsSlider",
     components: {
         VueSlickCarousel 
     },
+    mixins: [cardMixin],
     methods: {
         onInitCarousel() {
             console.log('our carousel is ready')
         },
         afterChange(i) {
-            console.log("64:: ",i)
-        }
-    }
+            // console.log("64:: ",i)
+            this.changeSelectedCard(i);
+        },
+        ...mapActions({
+            changeSelectedCard: "changeSelectedCard",
+        }),
+    },
+
 }
 </script>
 
