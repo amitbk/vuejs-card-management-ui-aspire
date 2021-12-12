@@ -3,13 +3,14 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+import { getRandomNumber } from "../utils"
 export default new Vuex.Store({
   state: {
     card: {name: '', number: ''},
     selectedCard: 0,
     cards: [
-      {id: Date.now(), name: "Amit Kadam", number: "1010"},
-      {id: Date.now()+1, name: "Prajakta Kadam", number: "1010"},
+      {id: Date.now(), name: "Amit Kadam", number: "1234567890123456", expiry: "09/12", cvv: "456"},
+      {id: Date.now()+1, name: "Rahul Kadam", number: "1234567890123456", expiry: "10/12", cvv: "123"},
     ]
   },
   mutations: {
@@ -42,9 +43,13 @@ export default new Vuex.Store({
     addCard(context) {
       let card = context.state.card;
       card.id = Date.now();
-      card.number = "0000 0000 000 0101";
-      card.cvv = "456";
-      card.expiry = "10/11";
+      card.number = getRandomNumber(16);
+      card.cvv = getRandomNumber(3);
+      
+      let month = ( Math.floor(Math.random() * 14)+1 ).toString().padStart(2, "0");
+      let date = ( Math.floor(Math.random() * 31)+1).toString().padStart(2, "0");
+      card.expiry = date+"/"+month;
+
       card.freezed = false;
       context.commit("ADD_NEW_CARD", card)
       context.commit("CLEAR_CARD");

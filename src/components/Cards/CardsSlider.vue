@@ -35,21 +35,21 @@
 
 
                             <div class="f-20 d-flex justify-content-between">
-                                <span>* * * *</span>
-                                <span>* * * *</span>
-                                <span>* * * *</span>
-                                <span>4152</span>
+                                <span>{{ card.number.substring(0,4) }} </span>
+                                <span>{{ card.number.substring(4,8) }} </span>
+                                <span>{{ card.number.substring(8,12) }} </span>
+                                <span>{{ card.number.substring(12,16) }} </span>
                             </div>
 
 
-                            <div class="d-flex justify-content-between my-2">
+                            <div class="d-flex justify-content-between my-4">
                                 <div>
-                                    Thru: 12/20
+                                    Thru: {{ card.expiry }}
                                 </div>
                                 <div>
-                                    CVV: *** 
+                                    CVV: {{ card.cvv }}
                                 </div>
-                                <div class="mt-3">
+                                <div class="mt-4">
                                     <img src="@/assets/visa.svg" alt="">
                                 </div>
                             </div>                        
@@ -110,5 +110,10 @@ export default {
     border-color: transparent!important;;
     border-bottom: #0cc9ef solid 3px !important;
     color: #fff!important;
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover
+{
+    border: none;
 }
 </style>

@@ -7,3 +7,9 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+.page {
+  width: 400px!important;
+}
+</style>
