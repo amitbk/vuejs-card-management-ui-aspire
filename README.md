@@ -2,6 +2,8 @@
 
 <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgeJncTd1kLy2854bBV17JOrvbcIZhewawltNrMEMKHl798eO8fuumjzZ7vieLmDtVI7yyc_rRMKIP46PLWbeueyFZVWmvlco1JJ3zzLnx8ES-PH5IvgqPg7cl2JZ1Icp-ucm5TsE4CghrPYwowgYu88velRycoM_fNNOh2hFgIri0iE1i9hn_XphcqOA=s16000" alt="a" width="500"/>
 
+[Netlify Demo Link](https://serene-brattain-e3b2b8.netlify.app/)
+
 ## Clone the project
 ```
 git clone git@github.com:amitbk/vuejs-card-management-ui-aspire.git
