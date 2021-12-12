@@ -14,14 +14,15 @@
             <div class="modal-body">
                 <div class="mb-3 mt-3">
                     <label for="card_name" class="form-label">Card name:</label>
-                    <input type="text" class="form-control" id="card_name" placeholder="Enter card name" v-model="card.name">
+                    <input type="text" class="form-control" id="card_name" placeholder="Enter card name" v-model="card.name" >
+                    <span class="text-danger">{{name_error}}</span>
                 </div>
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal" @click="addCard">Add</button>
+                <button type="button" ref="close_modal" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" @click="onAddCardClick">Add</button>
             </div>
 
             </div>
@@ -33,8 +34,26 @@ import { cardMixin } from "../../mixins/card"
 import { mapActions } from "vuex";
 export default {
     mixins: [cardMixin],
-    methods: {
-        
+    data() {
+        return {
+            name_error: ""
+        }
+    },
+    methods: {        
+        onAddCardClick() {
+
+            // validate
+            this.name_error = "";
+            if(!this.card.name)
+                this.name_error = "Card name is required."
+            
+            // add card
+            if(!this.name_error) {
+                this.addCard();
+                this.$refs.close_modal.click();
+            }
+
+        },
         ...mapActions({
             addCard: "addCard",
         }),
