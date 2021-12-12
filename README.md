@@ -26,6 +26,22 @@ npm run build
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+## Features
+### New card
+Click on `New Card` button to add new card
+
+### Freeze card
+Click on `Freeze Card` button to freeze card
+
+### Remove card
+Click on `Cancel Card` button to cancel card
+
+## Some important things:
+- For card slider, vue-slick-carousel package is used.
+- After removing all cards and adding new card, that package has some rendering issues.
+- Recent transactions are hard coded
+- Bottom menus: active menu color is not added
+
 
 ## UI
 
